@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="TimeGridView" extends="SGDEXComponent">
+    <interface>
+        <field id="MAX_SIMULTANEOUS_LOADINGS" type="integer" value="3" />
+        <field id="contentStartTime" type="integer" alias="timeGrid.contentStartTime" />
+        <field id="maxDays" type="integer" alias="timeGrid.maxDays" />
+        <field id="rowItemSelected" type="array" alwaysNotify="true" />
+    </interface>
+    <script type="text/brightscript" uri="TimeGridView.brs" />
+    <script type="text/brightscript" uri="ContentManager.brs" />
+    <script type="text/brightscript" uri="../../ContentManager/ContentManagerUtils.brs" />
+    <children>
+        <Rectangle
+            id="blending"
+            opacity="0"
+            color="0x000000EE"
+            width="1280"
+            height="720" />
+        <CustomTimeGrid
+            id="timeGrid"
+            translation="[0.0, 150.0]"
+            />
+        <LayoutGroup
+            translation="[640,360]"
+            horizAlignment="center"
+            vertAlignment="center"
+            >
+            <BusySpinner
+                id="spinner"
+                visible="false"
+                />
+        </LayoutGroup>
+    </children>
+</component>
