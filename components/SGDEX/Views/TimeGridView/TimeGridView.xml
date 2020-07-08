@@ -12,7 +12,7 @@
     <children>
         <Rectangle
             id="blending"
-            opacity="0"
+            opacity="0.2"
             color="0x000000EE"
             width="1280"
             height="720" />
@@ -25,10 +25,6 @@
             horizAlignment="center"
             vertAlignment="center"
             >
-            <BusySpinner
-                id="spinner"
-                visible="false"
-                />
         </LayoutGroup>
     </children>
 </component>

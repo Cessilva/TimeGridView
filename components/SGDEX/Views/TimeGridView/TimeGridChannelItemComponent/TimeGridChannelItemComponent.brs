@@ -1,6 +1,6 @@
-' Copyright (c) 2019 Roku, Inc. All rights reserved.
-
+'Se maneja El lado de la izquierda de los canales 
 sub Init()
+'Pues poner un poster y un titulo
     m.title = m.top.findNode("title")
     m.poster = m.top.findNode("poster")
     m.poster.ObserveField("loadStatus", "OnPosterLoadStatusChanged")
@@ -35,11 +35,18 @@ sub OnLayoutChanged(event as Object)
     m.poster.loadheight = renderingHeight
     m.title.width = renderingWidth
     m.title.height = renderingHeight
+    
 end sub
 
 sub OnPosterLoadStatusChanged(event as Object)
+
     loadStatus = event.getData()
     if loadStatus = "ready"
         m.title.visible = false
     end if
+end sub
+
+sub showfocus()
+print "here i am"
+    m.title.color="#2b85cd"
 end sub

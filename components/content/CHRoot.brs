@@ -34,12 +34,11 @@ sub GetContent()
         'KASW-HD 61      espacio+major
         'KASW-HD 61.1    punto+minor
         if channelJSON.channel.major <> invalid
-            channelNode.title += " " + channelJSON.channel.major.ToStr()
+            channelNode.title=channelJSON.channel.major.ToStr()+" " +channelNode.title 
         end if
 
         if channelJSON.channel.minor <> invalid
-            channelNode.title += "." + channelJSON.channel.minor.ToStr()
-
+            channelNode.title=channelJSON.channel.major.ToStr()+"." + channelJSON.channel.minor.ToStr()+" " +channelNode.title
         end if
 
         'El ID es usado en la fila para identificar el canal 

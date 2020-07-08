@@ -3,9 +3,10 @@
 
 <component name="TimeGridChannelItemComponent" extends="Group">
     <interface>
-      <field id="content" type="node" />
+      <field id="content" type="node" onChange="Imprime" />
       <field id="width" type="float" />
       <field id="height" type="float" />
+      <field id="rowFocusPercent" type="float" onChange="showfocus" />
     </interface>
 
     <script type="text/brightscript" uri="TimeGridChannelItemComponent.brs" />
@@ -15,8 +16,8 @@
         <Label
             id="title"
             vertAlign="center"
-            horizAlign="center"
-            opacity="0.9"
+            horizAlign="left"
+            opacity="1.0"
             font="font:SmallSystemFont"
             />
         <Poster

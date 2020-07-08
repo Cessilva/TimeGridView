@@ -2,18 +2,15 @@
 
 function Init()
     InitTimeGridViewNodes()
-    m.spinner = m.top.FindNode("spinner")
-    m.spinner.uri = "pkg:/components/SGDEX/Images/loader.png"
-    ShowSpinner(true)
-
+   
     InitContentGetterValues()
     m.MAX_RADIUS = 45
     m.debug = false
     m.Handler_ConfigField = "HandlerConfigTimeGrid"
     m.SectionKeyField = "CM_row_ID_Index"
-
+    'Se activa solo si se cambia de fila, en la misma no hace nada
     m.top.ObserveField("focusedChild", "OnFocusedChild")
-    m.top.ObserveField("wasShown", "OnWasShown")
+    'Asigna el contenido con el manejador
     m.top.ObserveField("content", "OnContentChange")
 
     m.view.observeField("content", "onTimeGridViewContentChange")
@@ -43,7 +40,14 @@ function Init()
     t = t - (t mod 1800) ' RDE-2665 - TimeGrid works best when contentStartTime is set to a 30m mark
     m.view.contentStartTime = t
     'AQUI SE CAMBIA EL ASPECTO DEL TIMEGRID 
-    m.view.programTitleFocusedColor="#2b85cd"
+    'Letras de la barra
+    m.view.timeLabelColor="#2b85cd"
+    'Color del tiempo pasado
+    m.view.pastTimeScreenBlendColor="#2b85cd"
+    'Color de linea de tiempo
+    m.view.nowBarBlendColor="#7c7c7c"
+    
+
 
     m.view.leftEdgeTargetTime = currentTime.AsSeconds()
 
@@ -79,14 +83,6 @@ sub InitTimeGridViewNodes()
     m.view.Reparent(m.top.viewContentGroup, false)
 end sub
 
-sub ShowSpinner(show)
-    m.spinner.visible = show
-    if show
-        m.spinner.control = "start"
-    else
-        m.spinner.control = "stop"
-    end if
-end sub
 
 Sub onLeftEdgeTimeChanged()
     RestartLazyLoadingTimer()
@@ -363,13 +359,12 @@ Function getPageToLoadInRange(channelNode, startTime, endTime)
 End Function
 
 Sub onTimeGridViewContentChange()
-    ShowSpinner(m.view.content = invalid OR m.view.content.GetChildCount() = 0)
-
     ' This logic will reset focus to current time or to
     ' first valid item if there are no content for current time
     if m._isContentFocusResetDone = true then return
 
     content = m.view.content
+    print content 
     if content = invalid then return
 
     channel = content.getChild(0)

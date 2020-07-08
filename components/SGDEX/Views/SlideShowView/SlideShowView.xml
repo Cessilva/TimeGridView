@@ -47,7 +47,7 @@
         <!-- Number of milliseconds to display the text overlay for each slide. -->
         <field id="textOverlayHoldTime" type="float" value="5" alias="hudTimer.duration" />
         <!-- @Public -->
-        <!-- Sets the mode for displaying slideshow images
+        <!-- Sets the mode for displaying slideshow images 
             Valid display modes are:
             scale-to-fit – scale image to fit horizontally or vertically as appropriate while still maintaining aspect ratio. (Default)
             scale-to-fill – scale image to completely fill the rectangle of the bounding frame

@@ -5,7 +5,6 @@
 sub Show(args as Object)
     ' create our TimeGridView
     grid = CreateObject("roSGNode", "TimeGridView")
-    print grid
     'Se crea la configuracion de controlador para el nodo raiz de arbol de contenido
     content = CreateObject("roSGNode", "ContentNode")
     content.AddFields({
