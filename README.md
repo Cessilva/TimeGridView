@@ -1,5 +1,8 @@
 # SGDEX TimeGridView
 
+This is a modification of the sample of TimeGridView :
+rokudev/SceneGraphDeveloperExtensions
+
 ## TimeGridView
 
 This sample demonstrates using the SGDEX TimeGridView. The TimeGridView is built
