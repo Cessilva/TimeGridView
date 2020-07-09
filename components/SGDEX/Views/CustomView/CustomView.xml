@@ -30,19 +30,14 @@
             id="backgroundRectangle"
             width="1280"
             height="720"
-            color="0xFFFFFF00"
-        />
-
+            color="0xFFFFFF00"/>
         <FadingBackground
             id="backgroundImage"
             width="1280"
             height="720"
             animationDuration ="0.5"
-            shadeOpacity ="0.5"
-        />
-
+            shadeOpacity ="0.5"/>
         <Overhang id="overhang" showOptions="true" showClock="false" />
-
         <LayoutGroup 
             translation="[640, 360]" 
             horizAlignment="center" 
@@ -50,8 +45,7 @@
             <BusySpinner 
                 id="spinner"
                 control="start"
-                visible="true"
-            />
+                visible="true"/>
         </LayoutGroup>
     </children>
 </component>

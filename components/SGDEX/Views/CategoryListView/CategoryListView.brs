@@ -2,7 +2,6 @@
 
 sub Init()
     initCategoryListViewNodes()
-
     ' init content manager utils field
     m.itemToSection = []
     m.firstItemInSection = [0]

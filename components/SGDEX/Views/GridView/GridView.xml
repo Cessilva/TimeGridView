@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (c) 2018 Roku, Inc. All rights reserved. -->
-
 <!--
     @Public
     Grid view represents SGDEX grid that is responsible for:
@@ -8,7 +7,6 @@
         - lazy loading of rows and item in row
         - loading pages of content
         - lazy loading rows when user is not navigating
-
     @Sample
     grid = CreateObject("roSGNode", "GridView")
     grid.setFields({
@@ -133,7 +131,7 @@
         <!--
             Interface to support different poster shapes for grid rows.
             Value is an array of strings, which set row poster shapes.
-            If the array contains fewer elements than the number of rows, then the shape of rest rows will be set to posterShape field 	    or to the last value in the array.
+            If the array contains fewer elements than the number of rows, then the shape of rest rows will be set to posterShape field	    or to the last value in the array.
         -->
         <field id="rowPosterShapes" type="stringarray" alwaysNotify="true" onChange="RebuildRowList" />
 

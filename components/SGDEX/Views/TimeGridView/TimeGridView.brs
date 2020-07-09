@@ -1,8 +1,10 @@
 ' ********** Copyright 2020 Roku Corp.  All Rights Reserved. **********
 
 function Init()
+'Se inicializa los nodos de vista  del TimeGridView: details y el poster que es
+' la descripcion Aqui se inicializa m.view como el CustomTimeGrid 
     InitTimeGridViewNodes()
-   
+'FUNCION INICIAR OBTENCION DE VALORES DEL CONTENIDO de ContentManagerUtils.brs
     InitContentGetterValues()
     m.MAX_RADIUS = 45
     m.debug = false
@@ -12,54 +14,72 @@ function Init()
     m.top.ObserveField("focusedChild", "OnFocusedChild")
     'Asigna el contenido con el manejador
     m.top.ObserveField("content", "OnContentChange")
-
+    'Restablece el foco para la hora actual o el primer elemento 
     m.view.observeField("content", "onTimeGridViewContentChange")
-
+    'Cambia el contenido del porster que es la descripcion con los valores
+    'del canal y el programa
     m.top.ObserveField("posterShape", "OnPosterShapeChange")
     m.top.posterShape = "4x3"
-
+    ' Establece los campos para el CustomTimeGrid 
     m.view.setFields({
+        'Fondo del recorrido para ver el avanze opaco
         showPastTimeScreen: true
         channelInfoComponentName: "TimeGridChannelItemComponent"
     })
-
+    'el CustomTimeGrid tiene varios fields:
+    'canal y programa focused
+    'Para que se reinicie el conteo de tiempo del borde izquierdo
+    'si se recorre en el canal 
+    'Programa seleccionado
     m.view.observeField("channelFocused", "channelFocused")
     m.view.observeField("programFocused", "programFocused")
     m.view.observeField("leftEdgeTargetTime", "onLeftEdgeTimeChanged")
     m.view.observeField("isScrolling", "onLeftEdgeTimeChanged")
     m.view.observeField("programSelected", "OnProgramSelected")
-
+    'Crea un timer
     m.lazyLoadingTimer = CreateObject("roSGNode", "Timer")
     m.lazyLoadingTimer.repeat = false
     m.lazyLoadingTimer.duration = 3
+    ' Cuando se active el timer empieza a cargar el contenido
     m.lazyLoadingTimer.observeField("fire", "StartContentLoading")
 
     currentTime =  CreateObject("roDateTime") ' roDateTime is initialized
     ' to the current time
     t = currentTime.AsSeconds()
-    t = t - (t mod 1800) ' RDE-2665 - TimeGrid works best when contentStartTime is set to a 30m mark
+    t = t - (t mod 1800) 
+    'RDE-2665: TimeGrid funciona mejor cuando contentStartTime se establece en una marca de 30 m
     m.view.contentStartTime = t
     'AQUI SE CAMBIA EL ASPECTO DEL TIMEGRID 
+    '(TALVEZ LO PODRIA PONER EN EL COMPONENTE CustomTimeGrid)
+    m.view.translation=[0,0]
     'Letras de la barra
     m.view.timeLabelColor="#2b85cd"
     'Color del tiempo pasado
     m.view.pastTimeScreenBlendColor="#2b85cd"
     'Color de linea de tiempo
     m.view.nowBarBlendColor="#7c7c7c"
-    
-
-
+    'La barrita de alado va a tomar el tiempo corriente en segundos 
     m.view.leftEdgeTargetTime = currentTime.AsSeconds()
-
+    'Si el canal no tiene texto 
     m.view.channelNoDataText = "Loading..."
     m.view.loadingDataText = "Loading..."
+    ' Permite que la región de datos del programa de la cuadrícula se 
+    ' reemplace automáticamente con el mensaje de carga especificado 
+    ' en el campo loadingDataText cada vez que el campo de contenido 
+    ' no se ha establecido o el usuario se desplaza a un momento en 
+    ' el que el contenido aún no se ha cargado.
     m.view.automaticLoadingDataFeedback = false
-
-    m.view.numRows = 7
+    'Numero de filas visibles
+    m.view.numRows = 8
+    ' Inserta un programa con la etiqueta "No hay datos disponibles" si hay 
+    ' una brecha entre la hora de inicio del programa y la hora de finalización
+    ' del programa anterior
     m.view.fillProgramGaps = true
 
-    ' View constants
+    ' View constants:Ayudan a alinear el timegrid
+    'Este no se que hace
     m.detailsTimeGridSpacing = 25
+    'Bandera
     m.timeGridWasMoved = false
 end function
 
@@ -70,17 +90,20 @@ sub InitTimeGridViewNodes()
         translation: [105,0]
         maxWidth: 666
     })
-
+    'Esta es la descripcion del canal
     m.poster = m.top.viewContentGroup.CreateChild("StyledPoster")
     m.poster.Update({
         id: "poster"
-        translation: [125, 0]
+        translation: [700,400]
         maxWidth: 357
         maxHeight: 201
     })
-
+    'Declaracion de m.view que es un componente CustomTimeGrid
     m.view = m.top.findNode("timeGrid")
     m.view.Reparent(m.top.viewContentGroup, false)
+    'Mueve de padre al nodo, se va con viewContentGroup
+    'reparent(newParent as roSGNode, adjustTransform as Boolean) as Boolean
+    'Moves the subject node to another parent node.
 end sub
 
 
@@ -96,7 +119,7 @@ sub OnFocusedChild()
         m.view.setFocus(true)
     end if
 end sub
-
+'Actualiza el contenido 
 sub OnContentChange()
     if m.top.content <> invalid
         if not m.top.content.IsSameNode(m.view.content) and not m.top.content.IsSameNode(m.content) then
@@ -359,12 +382,10 @@ Function getPageToLoadInRange(channelNode, startTime, endTime)
 End Function
 
 Sub onTimeGridViewContentChange()
-    ' This logic will reset focus to current time or to
-    ' first valid item if there are no content for current time
+    ' Esta lógica restablecerá el foco a la hora actual o al primer elemento
+    ' válido si no hay contenido para la hora actual
     if m._isContentFocusResetDone = true then return
-
     content = m.view.content
-    print content 
     if content = invalid then return
 
     channel = content.getChild(0)
@@ -433,3 +454,8 @@ Function NewCycleNodeChildrenIterator(node, startIndex, count) as Object
         end function
     }
 End Function
+sub muestraPrograma()
+'print m.top.rowItemSelected
+' Imprime un arreglo cuando lo seleccionas [5,8]
+' Canal 5 y programa 8
+end sub 

@@ -1,30 +1,29 @@
-' Copyright (c) 2018 Roku, Inc. All rights reserved.
-
+'FUNCION INICIAR OBTENCION DE VALORES DEL CONTENIDO
 sub InitContentGetterValues()
     m.Handler_ConfigField = "HandlerConfigGrid"
-    'print debug info
+    'Imprimir la informacion de debug
     m.debug = false
-    'change poster url for items that are added to queue
+    'Cambiar la url del poster por los elementos que se van añadiendo a la cola
     m.debug_loadingItems = false
-    ' Tells how many extra rows should be loaded, so we have more that visible rows loaded
-    ' to prefetch data when developer will need it
+    'Dice cuantas filas extras deben ser cargadas, así que tenemos más de las filas
+    'visibles cargadas para capturar datos cuando el desarrollador lo necesite
     m.EXTRA_ROWS = 2
     m.VISIBLE_ITEMS = 5
-    'reset all idle values
+    'restablecer todos los valores inactivos
     resetIdleValues()
-    'maximum radius for loading content
+    'radio maximo para cargar contenido
     m.MAX_RADIUS = 30
-    ' internal fields
+    'campos internos
     m.ContentManager_id = - 1
-    'callbacks map for each task that is executed
+    'mapa de callbacks para cada tarea que se ejecuta
     m.ContentManager_callbacks = {}
-    'map of current pending tasks so we don't add task to queue again
+    'mapa de tareas pendientes actuales, para que no agreguemos tareas a la cola nuevamente
     m.ContentManager_TaskIds = {}
-    'map for holding current loading page per row so we don't load it again
+    'mapa para mantener la página de carga actual por fila para que no volvamos a cargarla
     m.ContentManager_Page_IDs = {}
-    'map for holding number of fails per row and page,  {"0" (row_index):{"1"(page_index):0 (count)}}
+    'mapa para mantener el número de fallas por fila y página:
+    '{"0" (row_index): {"1" (page_index): 0 (count)}}
     m.ContentManager_Page_Fails = {}
-
     ' Fields for queue
     m.waitingQueue = []
     'tasks that are running now
@@ -32,7 +31,7 @@ sub InitContentGetterValues()
 
     m.previousFocusedRow = - 1
     m.previousFocusedItemIndex = - 1
-    'background update timer
+    'background update timer (temporizador de actualización de fondo)
     m.IdleUpdateTimer = CreateObject("roSGNode", "Timer")
     if m.top.IDLE_ROW_LOAD_TIME <> invalid then
         m.IdleUpdateTimer.duration = m.top.IDLE_ROW_LOAD_TIME

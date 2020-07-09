@@ -1,30 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="TimeGridView" extends="SGDEXComponent">
+<!--
+    @Public
+     TimeGridView  representa la vista de SGDEX que es la responsable de :
+     -Renderizar el nodo de TimeGrid
+     -cargar el contenido con modelos de contenido diferentes
+     -cargar el contenido de los canales cuando el usuario esta navegando 
+     -carga diferida de canales en IDLE
+
+    @Sample
+    timeGrid = CreateObject("roSGNode", "TimeGridView")
+    MainScene ==> grid = CreateObject("roSGNode", "TimeGridView")
+
+    content = CreateObject("roSGNode", "ContentNode")
+    content.addfields({
+        HandlerConfigTimeGrid: {
+            name: "HCTimeGrid"
+        }
+    })
+    timeGrid.content = content
+
+
+    MainScene ==> 'Se crea la configuracion de controlador para el nodo raiz de arbol de contenido
+    content = CreateObject("roSGNode", "ContentNode")
+    content.AddFields({
+        HandlerConfigTimeGrid: {
+            name: "CHRoot"
+        }
+    })
+    ' Le pasa el contenido al TimeGridView
+    grid.content = content
+
+
+    timeGrid.observeField("rowItemSelected", "OnTimeGridRowItemSelected")
+    m.top.ComponentController.callFunc("show", {
+        view: timeGrid
+    })
+
+    MainScene ==> No aparece el observador
+    ' esto activará el trabajo para mostrar esta pantalla
+    m.top.ComponentController.CallFunc("show",{view: grid})
+-->
+<component name="TimeGridView" extends="SGDEXComponent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
     <interface>
+    	<!-- MAX_SIMULTANEOUS_LOADINGS:limita el numero de task para cargar las filas -->
         <field id="MAX_SIMULTANEOUS_LOADINGS" type="integer" value="3" />
+        <!--Alias to the TimeGrid contentStartTime field
+        La primera hora a la que se puede desplazar la cuadrícula de tiempo. 
+        El rango de tiempos desplazables se define por la suma de los campos 
+        contentStartTime y maxDays por default es 0-->
         <field id="contentStartTime" type="integer" alias="timeGrid.contentStartTime" />
+        <!--Alias to the TimeGrid maxDays field.Especifica el ancho total 
+        de la cuadrícula de tiempo en días, por default es 7 -->
         <field id="maxDays" type="integer" alias="timeGrid.maxDays" />
-        <field id="rowItemSelected" type="array" alwaysNotify="true" />
+        <!--Se actualiza cuando el usuario selecciona un programa de TimeGrid
+        El valor es una matriz de índices que representa [channelIndex, programIndex]
+        actualizado simultáneamente con channelSelected y programSelected-->
+        <field id="rowItemSelected" type="array" alwaysNotify="true" onChange="muestraPrograma" />
     </interface>
+
     <script type="text/brightscript" uri="TimeGridView.brs" />
     <script type="text/brightscript" uri="ContentManager.brs" />
+    <!-- Es el manejador para carar las cosas, tiene varias funciones -->
     <script type="text/brightscript" uri="../../ContentManager/ContentManagerUtils.brs" />
     <children>
-        <Rectangle
+        <!--Rectangulo que cubria toda la pantalla y daba una opacidad <Rectangle
             id="blending"
-            opacity="0.2"
-            color="0x000000EE"
+            opacity="0.5"
+            color="0x50ab35EE"
             width="1280"
-            height="720" />
+            height="720"
+        /> -->
         <CustomTimeGrid
             id="timeGrid"
-            translation="[0.0, 150.0]"
+            translation="[0.0, 100.0]"
             />
-        <LayoutGroup
+        <!--No hacia nada <LayoutGroup
             translation="[640,360]"
             horizAlignment="center"
             vertAlignment="center"
             >
-        </LayoutGroup>
+        </LayoutGroup> -->
     </children>
 </component>

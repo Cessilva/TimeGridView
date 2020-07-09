@@ -10,11 +10,11 @@
     <script type="text/brightscript" uri="../../../utils/utils.brs"/>
     
     <children>
-        <Rectangle
+        <!-- <Rectangle
             width="650"
             height="180"
             color="0x202020ff"
-        />
+        /> -->
 
         <LayoutGroup layoutDirection="horiz" itemSpacings="[10]" vertAlignment="custom">
             <StyledPoster id="poster"

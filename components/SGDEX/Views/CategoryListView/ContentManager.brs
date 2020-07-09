@@ -1,8 +1,5 @@
-' Copyright (c) 2018 Roku, Inc. All rights reserved.
-
 sub OnRootContentLoaded()
     canSetContent = true
-
     content = m.top.content
     content.isLoaded = true
     numItemsToLoad = GetVisibleItems()
@@ -45,7 +42,7 @@ sub OnRootContentLoaded()
     end for
 
     if canSetContent then
-        ' if we have spinner visible and enough rows to show we can hide the spinner
+        'if we have spinner visible and enough rows to show we can hide the spinner
         if canSetContent then
             ShowBusySpinner(false)
             ResetAllmaps()
@@ -87,7 +84,6 @@ sub LoadContentForSection(section, params = {}, callback = invalid as Object)
             ' if no extra callback was passed and we failed then we have to restore config
         else if not isSuccess then
             Handler_ConfigField = GetGlobalAA().Handler_ConfigField
-
             if m.section[Handler_ConfigField] = invalid then
                 m.section[Handler_ConfigField] = m.config
             end if
