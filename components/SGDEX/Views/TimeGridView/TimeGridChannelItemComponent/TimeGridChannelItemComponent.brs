@@ -8,12 +8,13 @@ sub Init()
     m.top.ObserveField("content","OnContentSet")
     m.top.ObserveField("width","OnLayoutChanged")
     m.top.ObserveField("height","OnLayoutChanged")
-
     m.horizontalMargin = 5
     m.verticalMargin = 7
     m.title.translation = [m.horizontalMargin, m.verticalMargin]
     m.poster.translation = [m.horizontalMargin, m.verticalMargin]
+
 end sub
+
 
 sub OnContentSet()
     content = m.top.content
@@ -28,7 +29,6 @@ end sub
 sub OnLayoutChanged(event as Object)
     renderingWidth = m.top.width - m.horizontalMargin * 2
     renderingHeight = m.top.height - m.verticalMargin * 2
-
     m.poster.width = renderingWidth
     m.poster.height = renderingHeight
     m.poster.loadWidth = renderingWidth
@@ -46,7 +46,3 @@ sub OnPosterLoadStatusChanged(event as Object)
     end if
 end sub
 
-sub showfocus()
-print "here i am"
-    m.title.color="#2b85cd"
-end sub

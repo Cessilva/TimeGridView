@@ -28,6 +28,11 @@
                 maxLines="3" 
                 wrap="true"
             />
+            <Label 
+                id="description2" 
+                maxLines="3" 
+                wrap="true"
+            />
         </LayoutGroup>
     </children>
 </component>

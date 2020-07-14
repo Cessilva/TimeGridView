@@ -278,7 +278,7 @@ sub SGDEX_SetTheme(theme as Object)
     if theme.textBoxHintColor = invalid and (theme.textBoxTextColor <> invalid or theme.textColor <> invalid)
         ' setting keyboard textColor will change the hint color as well
         ' reset hint color if user does not set it explicitly
-        theme.textBoxHintColor = "0xfefefe"
+        theme.textBoxHintColor = "0xff0000"
     end if
     keyboardThemeAttributes = {
         keyboardKeyColor: { keyboard: "keyColor" }

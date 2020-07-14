@@ -6,7 +6,6 @@
       <field id="content" type="node" onChange="Imprime" />
       <field id="width" type="float" />
       <field id="height" type="float" />
-      <field id="rowFocusPercent" type="float" onChange="showfocus" />
     </interface>
 
     <script type="text/brightscript" uri="TimeGridChannelItemComponent.brs" />

@@ -303,7 +303,7 @@ sub SetThemeForAllLabels()
 end sub
 
 function GetLabelColor(themeAttribute as String)
-    color = "0xddddddff" ' default label color
+    color = "0xff0000ff" ' default label color
 
     if m.LastThemeAttributes <> invalid
         if m.LastThemeAttributes[themeAttribute] <> invalid
