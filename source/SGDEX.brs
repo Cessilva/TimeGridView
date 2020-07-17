@@ -17,7 +17,13 @@ sub StartSGDEXChannel(componentName, args)
     screen.Show()
     scene.ObserveField("exitChannel", m.port)
     scene.launch_args = args
-    
+     scene.theme = {
+    global: {
+       backgroundColor:"#000000",
+       OverhangTitle:"Opciones",
+       OverhangShowClock:"true",
+       OverhangOptionsAvailable:"true"
+    }}
     ' create roInput context for handling roInputEvent messages
     input = CreateObject("roInput")
     input.setMessagePort(m.port)

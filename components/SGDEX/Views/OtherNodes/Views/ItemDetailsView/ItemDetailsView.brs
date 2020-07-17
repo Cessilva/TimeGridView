@@ -3,6 +3,7 @@
 sub Init()
     m.titleLabel = m.top.findNode("title")
     m.descriptionLabel = m.top.findNode("description")
+    m.descriptionLabel2 = m.top.findNode("description2")
 end sub
 
 sub onMaxWidthChange()
@@ -22,9 +23,11 @@ sub onContentSet()
         end if
         m.titleLabel.text = titleLabelText
         m.descriptionLabel.text = content.description
+        m.descriptionLabel2.text = content.description
     else
         m.titleLabel.text = ""
         m.descriptionLabel.text = ""
+        m.descriptionLabel2.text = ""
     end if
 end sub
 

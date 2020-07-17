@@ -12,6 +12,8 @@ sub Show(args as Object)
             name: "CHRoot"
         }
     })
+    'Poniendo el tema
+    grid.theme = {   textColor: "#c91616" }
     ' Le pasa el contenido al TimeGridView
     grid.content = content
 

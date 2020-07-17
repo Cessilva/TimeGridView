@@ -91,7 +91,7 @@ sub SaveColors()
     else if theme.textColor <> invalid
         m.buttonTextColor = theme.textColor
     else
-        m.buttonTextColor = "0xff0000"
+        m.buttonTextColor = "0xffffff"
     end if
 
     if theme.focusedButtonColor <> invalid

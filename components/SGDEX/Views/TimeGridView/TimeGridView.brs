@@ -26,6 +26,8 @@ function Init()
         showPastTimeScreen: true
         channelInfoComponentName: "TimeGridChannelItemComponent"
     })
+
+    
     'el CustomTimeGrid tiene varios fields:
     'canal y programa focused
     'Para que se reinicie el conteo de tiempo del borde izquierdo
@@ -51,13 +53,16 @@ function Init()
     m.view.contentStartTime = t
     'AQUI SE CAMBIA EL ASPECTO DEL TIMEGRID 
     '(TALVEZ LO PODRIA PONER EN EL COMPONENTE CustomTimeGrid)
-    m.view.translation=[0,0]
+    m.view.translation=[0,10]
     'Letras de la barra
-    m.view.timeLabelColor="#2b85cd"
+    m.view.timeLabelColor="#c91616"
     'Color del tiempo pasado
-    m.view.pastTimeScreenBlendColor="#2b85cd"
+    m.view.pastTimeScreenBlendColor="#c91616"
     'Color de linea de tiempo
     m.view.nowBarBlendColor="#7c7c7c"
+    
+
+    PRINT m.view
     'La barrita de alado va a tomar el tiempo corriente en segundos 
     m.view.leftEdgeTargetTime = currentTime.AsSeconds()
     'Si el canal no tiene texto 
@@ -70,7 +75,7 @@ function Init()
     ' el que el contenido aún no se ha cargado.
     m.view.automaticLoadingDataFeedback = false
     'Numero de filas visibles
-    m.view.numRows = 8
+    m.view.numRows = 7
     ' Inserta un programa con la etiqueta "No hay datos disponibles" si hay 
     ' una brecha entre la hora de inicio del programa y la hora de finalización
     ' del programa anterior
@@ -94,7 +99,7 @@ sub InitTimeGridViewNodes()
     m.poster = m.top.viewContentGroup.CreateChild("StyledPoster")
     m.poster.Update({
         id: "poster"
-        translation: [700,400]
+        translation: [200,400]
         maxWidth: 357
         maxHeight: 201
     })

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2018 Roku, Inc. All rights reserved. -->
-<!--
-    @Public
-    Grid view represents SGDEX grid that is responsible for:
-        - content loading
-        - lazy loading of rows and item in row
-        - loading pages of content
-        - lazy loading rows when user is not navigating
-    @Sample
+<!--Grid view represents SGDEX grid that is responsible for:
+        - carga cntenido
+        - carga lenta de filas y elementos en fila
+        - cargado de contenido de paginas
+        - carga lenta de filas cuando el usuario no esta navegando
+@Sample
     grid = CreateObject("roSGNode", "GridView")
     grid.setFields({
         style: "standard"
@@ -25,9 +22,6 @@
     m.top.ComponentController.callFunc("show", {
         view: grid
     })
-
-
-
     ' Content metadata field that can be used:
 
     root = {
@@ -99,69 +93,36 @@
 
 <component name="GridView" extends="SGDEXComponent" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
     <interface>
-        <!-- @Public -->
         <!-- Updated when focused item changes
         Value is an array containing the index of the row and item that were focused -->
         <field id="rowItemFocused" type="vector2d" alwaysNotify="true" onChange="SimulateAlias" />
-
-        <!-- @Public -->
-        <!--
-            Updated when an item is selected
-            Value is an array containing the index of the row and item that were selected
-        -->
+        <!--Updated when an item is selected
+            Value is an array containing the index of the row and item that were selected -->
         <field id="rowItemSelected" type="vector2d" alwaysNotify="true" onChange="SimulateAlias" />
-
-        <!-- @Public -->
-        <!--
-            Set grid focus to specified item
+        <!-- Set grid focus to specified item
             Value is an array containing the index of the row and item that should be focused
-            This field must be set after setting the content field.
-        -->
+            This field must be set after setting the content field. -->
         <field id="jumpToRowItem" type="vector2d" alwaysNotify="true" onChange="SimulateAlias" />
-
-        <!-- @Public -->
-        <!--
-            Set grid focus to specified row
+        <!-- Set grid focus to specified row
             Value is an integer index of the row that should be focused
-            This field must be set after setting the content field.
-        -->
+            This field must be set after setting the content field.-->
         <field id="jumpToRow" type="integer" alwaysNotify="true" onChange="SimulateAlias" />
-
-        <!-- @Public -->
-        <!--
-            Interface to support different poster shapes for grid rows.
+        <!--Interface to support different poster shapes for grid rows.
             Value is an array of strings, which set row poster shapes.
-            If the array contains fewer elements than the number of rows, then the shape of rest rows will be set to posterShape field	    or to the last value in the array.
-        -->
+            If the array contains fewer elements than the number of rows, then the shape of rest rows will 
+            be set to posterShape field	or to the last value in the array.-->
         <field id="rowPosterShapes" type="stringarray" alwaysNotify="true" onChange="RebuildRowList" />
-
-        <!-- @Public -->
-        <!--
-            Controls whether the view displays metadata for the focused item above the grid
-        -->
+        <!--Controls whether the view displays metadata for the focused item above the grid-->
         <field id="showMetadata" type="boolean" value="true" alwaysNotify="true" onChange="RebuildRowList" />
-
-        <!-- @Public -->
-        <!--
-            Controls the items wrap from bottom to top
-        -->
+        <!-- Controls the items wrap from bottom to top-->
         <field id="wrap" type="boolean" value="false" alwaysNotify="true" onChange="RebuildRowList" />
-
-        <!-- @Private -->
-        <!--
-            Used by content manager to notify the view whether content is loading
-            This field is not intended to be used from the channel scope
-        -->
+        <!--Used by content manager to notify the view whether content is loading
+            This field is not intended to be used from the channel scope  -->
         <field id="showSpinner" type="boolean" alwaysNotify="true" onChange="OnShowSpinnerChange" />
         <field id="updateFocusedItem" type="boolean" alwaysNotify="true" onChange="OnUpdateFocusedItem" />
-
         <field id="details" type="node" />
-
-        <!--
-            @Public
-            @Override
+        <!--@Override
             <field id="theme" type="assocarray" />
-
             Controls the color of visual elements
 
             @PossibleValue textColor - sets the color of all text elements in the view
@@ -189,7 +150,6 @@
             @Public
             @Override
             <field id="style" type="string" />
-
             Styles are used to tell what grid UI will be used
 
             @PossibleValue standard - This is default grid style
@@ -216,6 +176,5 @@
             Controls how SGDEX will load the content for the view
         -->
     </interface>
-
     <script type="text/brightscript" uri="GridView.brs" />
 </component>
