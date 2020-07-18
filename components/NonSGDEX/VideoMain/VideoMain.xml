@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="VistaPersonalizada" extends="Group" >
     <interface>
-        <field id="text" type="string" alias="Label.text"/>
+        <field id="text" type="string" />
     </interface>
     <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/VideoMain/VideoMain.brs"/>
     <children>
         <Group id="container">
-            <Label id="Label"/>
-             <Button id="btn" text="Push Me" translation ="[100,100]"/>
+            <VideoScreen id="VideoPlayer"/>
+            <Consulta id="Consulta"/>
+            <Options id="Options"/>
+            <VideoOptions id="VideoOptions"/>
         </Group>
     </children>
 </component>
