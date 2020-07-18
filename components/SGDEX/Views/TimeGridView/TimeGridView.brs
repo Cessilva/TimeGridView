@@ -60,9 +60,6 @@ function Init()
     m.view.pastTimeScreenBlendColor="#c91616"
     'Color de linea de tiempo
     m.view.nowBarBlendColor="#7c7c7c"
-    
-
-    PRINT m.view
     'La barrita de alado va a tomar el tiempo corriente en segundos 
     m.view.leftEdgeTargetTime = currentTime.AsSeconds()
     'Si el canal no tiene texto 
@@ -163,7 +160,9 @@ end sub
 ' with GridView
 sub OnProgramSelected(event as Object)
     timeGrid = event.GetRoSGNode()
-    m.top.rowItemSelected = [timeGrid.channelSelected, timeGrid.programSelected]
+    m.top.rowItemSelected = [timeGrid.channelSelected, timeGrid.programSelected]    
+    ' content=timeGrid.content
+    ' timeGridScreen=ShowDetailsScreen(content)
 end sub
 
 function channelFocused(event as Object)

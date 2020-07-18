@@ -39,7 +39,6 @@ function onKeyEvent(key as String, press as Boolean)
             m.top.GetScene().exitChannel = true
         end if
         return true
-    
     else 
     print "Actuales parametros de tema-----------------------------------"
     print m.top.actualThemeParameters

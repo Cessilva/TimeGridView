@@ -12,11 +12,9 @@ sub Show(args as Object)
             name: "CHRoot"
         }
     })
-    'Poniendo el tema
-    grid.theme = {   textColor: "#c91616" }
     ' Le pasa el contenido al TimeGridView
     grid.content = content
-
+    grid.observeField("rowItemSelected","ShowItemSelected")
     ' esto activará el trabajo para mostrar esta pantalla
     m.top.ComponentController.CallFunc("show",{view: grid})
     'Channel applications, however, must fire an AppLaunchComplete beacon when
@@ -25,3 +23,11 @@ sub Show(args as Object)
     'ES DE BUENA PROGRAMACION MANAR EL MENSAJITO Y ES DE CERTIFICACION
     m.top.signalBeacon("AppLaunchComplete")
 end sub
+
+sub ShowItemSelected(event as Object)
+    grid = event.GetRoSGNode()
+    selectedIndex = event.getdata()
+    rowContent = grid.content.getChild(selectedIndex[0])
+    detailsScreen = ShowDetailsScreen(rowContent, selectedIndex[1])
+    detailsScreen.ObserveField("wasClosed", "OnDetailsWasClosed")
+end sub 

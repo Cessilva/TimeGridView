@@ -64,6 +64,7 @@
     <script type="text/brightscript" uri="ContentManager.brs" />
     <!-- Es el manejador para carar las cosas, tiene varias funciones -->
     <script type="text/brightscript" uri="../../ContentManager/ContentManagerUtils.brs" />
+    
     <children>
         <!--Rectangulo que cubria toda la pantalla y daba una opacidad <Rectangle
             id="blending"

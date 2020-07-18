@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Video" extends="Group" >
+    <interface>
+        <field id="text" type="string" alias="Label.text"/>
+    </interface>
+    <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/Video/Video.brs"/>
+    <children>
+        <Group id="container">
+            <Video
+            id="musicvideos"
+            width="1280"
+            height="720"
+            translation="[0,0]"
+            />
+        </Group>
+    </children>
+</component>
+
