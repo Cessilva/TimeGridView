@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name = "RowListItemButtons" extends = "Group" >
+  <interface > 
+    <field id = "itemContent" type = "node"  onChange = "showcontent"/>
+    <field id= "width" type="float" onChange="onWidthChange"/>
+    <field id="itemHasFocus" type="boolean"  onChange="onFocusChange" />
+    <field id="itemFocused" type="integer"  onChange="onColorChange" />
+  </interface>
+  <script type = "text/brightscript" uri="RowListItemButtons.brs/"></script>
+  <children >
+    <Rectangle 
+        id="mainRectangle"  
+        width="110"
+        height="60">       
+        <Rectangle 
+        id="frame" 
+        color="#000000"
+        width="110"
+        height="60"
+        visible="true">
+        <Rectangle 
+        id="bg"
+        width="104"
+        height="54"
+        color="#000000" 
+        translation="[3,3]"
+        >
+        </Rectangle>
+        </Rectangle> 
+        <Poster 
+        id="buttonIcon"
+        width="50"
+        height="50" />
+        <Label id="buttonText" 
+        color="#ffffffff"
+        width="110"
+        height="60"
+        vertAlign = "center"
+        horizAlign="center"
+        font="font:LargeBoldSystemFont"
+        />
+        </Rectangle> 
+  </children>
+</component>

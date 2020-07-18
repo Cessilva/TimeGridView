@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="Description" extends="LayoutGroup">
+    <interface>
+        <field id="Content"  type="node" onChange="OnContentChanged"/>
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/NonSGDEX/Description/Description.brs" />
+    <children>
+    <Rectangle id="rectanglePrincipal" width="700" >
+    <Poster
+            id="Poster"
+            width="130"
+            height="160" />
+     <Rectangle id="rectangleDescription" translation="[150,0]"> 
+        <Label
+            id="Title"
+            color="0xFFFFFF"
+            font="font:SmallBoldSystemFont"
+            text=""/>
+        <Label
+            id="ReleaseDate"
+            color="0xFFFFFF"
+            font="font:SmallBoldSystemFont"
+            translation="[0,32]"
+            text=""/>
+        <Label
+            id="Description"
+            color="0xFFFFFF"
+            font="font:SmallSystemFont"
+            translation="[0,70]"
+            wrap="true"
+            width="550"
+            height="160"/>
+        </Rectangle>
+        </Rectangle>
+    </children>
+</component> 

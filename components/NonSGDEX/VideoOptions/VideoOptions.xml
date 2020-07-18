@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name = "VideoOptions" extends = "Group" >
+<interface>
+        <field id="hasFocus" type="boolean" onChange="asignaFocus" alwaysNotify="true"/>
+        <field id="salida" type="boolean" alwaysNotify="true"/>
+        <field id="titulo" type="string" alwaysNotify="true" onChange="tituloCambia"/>
+    </interface>
+<script uri="pkg:/components/NonSGDEX/VideoOptions/VideoOptions.brs" type="text/brightscript"/>
+  <children>
+      <RowListButtons id="myRowListOptions" translation="[655,380]"/>
+    <Consulta id="Consulta"/>
+  </children>
+</component>

@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<component name = "RowListItemOptions" extends = "Group" >
+  <interface > 
+    <field id = "itemContent" type = "node"  onChange = "showcontent"/>
+    <field id= "width" type="float" onChange="onWidthChange"/>
+    <field id= "height" type="float" onChange="onHeightChange"/>
+    <field id="itemHasFocus" type="boolean"  onChange="onFocusChange" />
+    <field id="itemFocused" type="integer"  onChange="onColorChange" />
+  </interface>
+  <script type = "text/brightscript" uri="RowListItemOptions.brs/"></script>
+  <children >
+    <Rectangle 
+        id="mainRectangle"  
+        width="190"
+        height="140">       
+        <Rectangle 
+        id="frame" 
+        color="#3c3c3c"
+        width="190"
+        height="140"
+        visible="true">
+        <Rectangle 
+        id="bg"
+        width="184"
+        height="134"
+        color="#3c3c3c" 
+        translation="[3,3]"
+        >
+        </Rectangle>
+        </Rectangle> 
+        <Poster 
+        id="buttonIcon"
+        width="45"
+        height="45" 
+        uri="pkg:/images/cine.png"/>
+        <Label id="buttonText" 
+        color="#ffffffff"
+        width="190"
+        height="140"
+        wrap="true"
+        text="Ver desde el inicio"
+        vertAlign = "center"
+        horizAlign="center"
+        translation="[0,30]"
+        font="font:LargeBoldSystemFont">
+        </Label>
+        </Rectangle> 
+  </children>
+</component>

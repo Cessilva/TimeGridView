@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="Consulta" extends="Group" >
+    <interface>
+        <field id="content" type="string" alias="LabelInfo.text" onChange="render"/> 
+        <field id="orientation" type="boolean" value="false" onChange="CambiaOrientacion"/>
+        <field id="heightConsulta" type="float" value="0" onChange="render"/>
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/NonSGDEX/Consulta/Consulta.brs" />    
+    <children>
+        <Label
+        id="LabelInfo"
+        font="font:MediumBoldSystemFont"/>
+        <Poster
+        height="30"
+        width="30"
+        id="testPoster"
+        uri="pkg:/images/flechaAbajo.png"/>
+    </children>
+</component>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="RowListButtons" extends="Group" > 
+<!-- BrightScript Portion -->
+<interface>
+    <field id="content" type="node" alias="myRowListButtons.content" />
+    <field id="mostrarLabel" type="boolean" value="false" onChange="mostrarLabel"/>
+    <field id="elements" type="float"/>
+    <field id="numFilas" type="float" value="1" alias="myRowListButtons.numRows"  />
+
+    <field alias="myRowListButtons.rowItemSelected" type="intarray" id="rowItemSelected" alwaysnotify="true"/>
+    <field onChange="OnItemFocused" alwaysnotify="true" alias="myRowListButtons.rowItemFocused" type="intarray" id="itemFocused"/>
+    <field alias="myRowListButtons.rowItemSize" type="intarray" id="rowItemSize" alwaysnotify="true"/>
+    <field id="letra" type="string" alwaysnotify="true" />
+    <field type="node" id="focusedContent"/>
+    <field type="string" id="titulo" alwaysnotify="true"/>
+    <field type="float" id="fatherWidth" alwaysnotify="true" onChange="centerToFather"/>
+    <field type="float" id="heightComponent" alwaysnotify="true" onChange="centerToFather"/>
+    <!-- Nombre del componente que se va a ocupar -->
+    <field  type="string" id="nameComponent" alias="myRowListButtons.itemComponentName" value="RowListItemButtons" />
+    <field  type="intarray" id="itemSize" alias="myRowListButtons.rowItemSize" value="[ [120, 60] ]" />
+    
+</interface>
+<script type="text/brightscript" uri="pkg:/components/NonSGDEX/RowListButtons/RowListButtons.brs"></script>
+<children>
+<RowList 
+      id = "myRowListButtons" 
+      rowItemSpacing="[[8,0]]"
+      itemSpacing="[0,30]"
+      drawFocusFeedback = "false" 
+      rowLabelFont="font:LargeBoldSystemFont"
+      rowFocusAnimationStyle = "fixedFocusWrap"
+      vertFocusAnimationStyle="floatingFocus"  />
+</children>
+</component>

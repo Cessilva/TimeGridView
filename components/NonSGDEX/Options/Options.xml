@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="Options" extends="Group" >
+    <interface>
+        <field id="hasFocus" type="boolean" onChange="asignaFocus" alwaysNotify="true"/>
+        <field id="salida" type="boolean" alwaysNotify="true"/>
+        <field id="nodoContenido" type="node"/>
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/NonSGDEX/Options/Options.brs" />    
+    <children>
+    <!-- HD: 1280x720px -->
+    <Rectangle id="rectanglePrincipal" width="1080" color="#1d1d1d" translation="[100,80]"> 
+        <RowListButtons id="myRowListButtons" />
+        <Description id="myDescription"  translation="[190,90]"/>
+        <RowListButtons id="myRowListCalidades"/> 
+        <RowListButtons id="myRowListIdiomas"/>
+       </Rectangle>
+    </children>
+</component>

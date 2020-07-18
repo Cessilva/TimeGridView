@@ -1,0 +1,50 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<component name = "MaskGroupExample" extends = "Group" >
+<script uri="pkg:/components/NonSGDEX/maskgroupscene/maskgroupscene.brs" type="text/brightscript"/>
+  <children>
+<!-- masksize:La escala y corta de arriba hacia abajo
+Ejemplo:
+maskSize="[20,80]"  no toma en cuenta el width(es el mismo que el de la imagen) 
+y solo se muestra 80 de height (este si varia) se muestra el 80 de arriba para abajo
+Tambien depende de la imagen bitmap
+
+maskOffset="[0,20]" no importa el primero , y lo otro lo corta de abajo a abbiba 
+80 del fondo hacia arriba
+      maskOffset = "[50,50]"  -->
+      <MaskGroup 
+        translation="[100,50]"
+        id = "exampleMaskGroup" 
+        maskBitmapWidth="0"
+        maskBitmapHeight="0"
+        maskSize="[0,300]"
+        maskuri = "pkg:/images/disenoj.png" >
+      <!-- translation="[-50,0]" 
+      Poster -->
+      <!--  translation="[2,0]" Asi en el eje 0,0 -->
+        <Poster 
+          id = "examplePoster" 
+          translation="[2,0]"
+          width = "2000" 
+          height = "2024" 
+          uri = "pkg:/images/logo3.png">
+           <!-- translation="[50,0]" MaskGroup-->
+         <!-- <MaskGroup 
+          translation="[50,0]"
+          maskuri = "pkg:/images/cuadroj.png" >
+          <Poster  width="146" height="120" uri ="pkg:/images/rosa.jpg"/>
+          </MaskGroup> -->
+        </Poster>
+        </MaskGroup>
+     
+     <Poster 
+        id = "examplePoster" 
+        width = "700" 
+          height = "708" 
+        translation="[600,0]"
+        uri = "pkg:/images/logo3.png" />
+  </children>
+
+</component>
