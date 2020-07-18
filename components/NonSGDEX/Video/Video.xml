@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="Video" extends="Group" >
+<component name="VistaPersonalizada" extends="Group" >
     <interface>
         <field id="text" type="string" alias="Label.text"/>
     </interface>
     <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/Video/Video.brs"/>
     <children>
         <Group id="container">
-            <Video
-            id="musicvideos"
-            width="1280"
-            height="720"
-            translation="[0,0]"
-            />
+            <Label id="Label"/>
+             <Button id="btn" text="Push Me" translation ="[100,100]"/>
         </Group>
     </children>
 </component>
-

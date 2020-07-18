@@ -2,4 +2,5 @@
 <component name="MainScene" extends="BaseScene" >
     <script type="text/brightscript" uri="MainScene.brs" />
     <script type="text/brightscript" uri="DetailsScreenLogic.brs" />
+    <script type="text/brightscript" uri="VistaPersonalizadaLogic.brs" />
 </component>
