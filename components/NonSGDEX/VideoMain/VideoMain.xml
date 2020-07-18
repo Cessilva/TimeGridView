@@ -3,7 +3,7 @@
     <interface>
         <field id="text" type="string" alias="Label.text"/>
     </interface>
-    <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/Video/Video.brs"/>
+    <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/VideoMain/VideoMain.brs"/>
     <children>
         <Group id="container">
             <Label id="Label"/>
