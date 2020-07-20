@@ -458,8 +458,3 @@ Function NewCycleNodeChildrenIterator(node, startIndex, count) as Object
         end function
     }
 End Function
-sub muestraPrograma()
-'print m.top.rowItemSelected
-' Imprime un arreglo cuando lo seleccionas [5,8]
-' Canal 5 y programa 8
-end sub 

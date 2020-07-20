@@ -21,10 +21,7 @@ sub OnButtonSelected(event as Object)
         details = event.GetRoSGNode()
         selectedButton = details.buttons.GetChild(event.GetData())
         if selectedButton.id = "play"
-        print "Seleccione play"
             if details.content.title <> invalid then
-            print "el contenido esta bien"
-                print details.content
                 ShowVistaPersonalizada(details.content.title)
             end if
         else

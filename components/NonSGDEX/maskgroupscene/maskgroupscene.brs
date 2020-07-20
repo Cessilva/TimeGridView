@@ -2,18 +2,18 @@ sub init()
       m.poster = m.top.findNode("examplePoster")
       m.dx=0
       m.dy=0
-      m.top.setFocus(true)
+      'm.top.setFocus(true)
+      'onKeyEvent
 end sub
+
 function onKeyEvent(key as String, press as Boolean) as Boolean
   handled = false
   if press then
     if (key = "back") then
       handled = false
     else if (key = "OK") then
-        print "hola"
       handled = true
     else if (key="left")
-        print key
          if m.dx=0 then
             m.dy=m.dy-1
             m.dx=10
@@ -37,7 +37,6 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             m.dx=0
             anteriory=m.poster.translation[1]
             anteriorx=m.poster.translation[0]
-            print anteriorx
             m.poster.translation=[0,anteriory-(2024/18)]
         end if
         handled = true

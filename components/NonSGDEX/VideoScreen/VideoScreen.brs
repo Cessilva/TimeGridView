@@ -1,5 +1,5 @@
 sub init()
-  m.top.setFocus(true)
+  'm.top.setFocus(true)
   setVideo()
 end sub
 function setVideo() as void
@@ -61,10 +61,6 @@ if m.pausada=false then
     if fila=-0 then
     fila=0
     end if
-    ' print "Fila:::::::::::::::::::::::."
-    ' print fila
-    ' print "Columna::::::::::::::::::::."
-    ' print columna
     m.posters.translation=[columna,fila] 
 end if
 end sub 
@@ -133,7 +129,6 @@ sub skip10Seconds()
                 m.dx=0
                 anteriory=m.posters.translation[1]
                 anteriorx=m.posters.translation[0]
-                print anteriorx
                 m.posters.translation=[0,anteriory-(2024/18)]
             end if
         else

@@ -41,8 +41,6 @@ m.myRowListOptions.nameComponent="RowListItemOptions"
 m.myRowListOptions.itemSize=[[160,140]]
 medidaRowListOptions=m.myRowListOptions.boundingRect()
 m.myRowListOptions.heightComponent=medidaRowListOptions.height
-print "Ancho de rowlistOptions"
-print m.myRowListOptions.width
 end sub
 
 function parseContent(list As Object)

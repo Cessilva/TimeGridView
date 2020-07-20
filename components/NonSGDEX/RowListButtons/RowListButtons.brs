@@ -37,8 +37,6 @@ handled = false
 if (not press) then
     if (key = "OK" ) then
             m.top.letra=m.top.focusedContent.title
-            ' print "--------------------------------"
-            ' print m.top.letra
     end if
 end if
 return handled

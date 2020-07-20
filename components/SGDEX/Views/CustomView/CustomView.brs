@@ -70,7 +70,6 @@ sub SGDEX_SetTheme(theme as Object)
                 "color"
                 "sectionDividerTextColor"
             ]
-
             info1:            "color"
             info2:            "color"
             actorsLabel:      "color"

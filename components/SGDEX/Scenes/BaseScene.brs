@@ -40,8 +40,8 @@ function onKeyEvent(key as String, press as Boolean)
         end if
         return true
     else 
-    print "Actuales parametros de tema-----------------------------------"
-    print m.top.actualThemeParameters
+    ' print "Actuales parametros de tema-----------------------------------"
+    ' print m.top.actualThemeParameters
     end if
 
     return false

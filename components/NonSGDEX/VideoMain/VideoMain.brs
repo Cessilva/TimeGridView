@@ -2,8 +2,6 @@ function init()
     m.top.observeField("focusedChild", "OnChildFocused")
 end function
 sub OnChildFocused()
-?"Me pasaron el focus wiiii"
-m.top.setFocus(true)
 m.consulta=m.top.findNode("Consulta")
 m.consulta.content="Presiona hacia abajo para mas opciones"
 m.options= m.top.findNode("Options")
@@ -19,21 +17,21 @@ m.VideoOptions.observeField("salida", "salidaOpciones")
 m.VideoOptions.titulo=m.options.nodoContenido.title
 end sub
 
-
-  sub salidaOpciones()
-  if m.options.salida=true or m.VideoOptions.salida=true then
-  m.videoPlayer.setFocus(true)
-  m.consulta.visible="false"
-  m.options.visible="false"
-  m.VideoOptions.visible="false"  
-  m.videoPlayer.videoControl="resume"
-  end if 
-  end sub
+sub salidaOpciones()
+if m.options.salida=true or m.VideoOptions.salida=true then
+m.videoPlayer.setFocus(true)
+m.consulta.visible="false"
+m.options.visible="false"
+m.VideoOptions.visible="false"  
+m.videoPlayer.videoControl="resume"
+end if 
+end sub
 
   function onKeyEvent(key as String, press as Boolean) as Boolean
   ?"[OnEvent] mainScene"
   handled = false
   if press then
+  PRINT key
     if (key = "OK") then
     m.counter++
       ?"status video:stop and label visible"
@@ -42,7 +40,6 @@ end sub
       if m.counter mod 2 = 0 then
       m.videoPlayer.videoControl="pause"
       m.consulta.visible="true"
-      
       ?"Pauso"
       else 
       m.videoPlayer.videoControl="resume"
@@ -83,9 +80,11 @@ end sub
       ?"Opcioneses"
        m.VideoOptions.hasFocus=true
       m.videoPlayer.videoControl="pause"
-      m.VideoOptions.setFocus(true)
+       m.VideoOptions.setFocus(true)
       m.VideoOptions.visible="true"
       m.videoPlayer.controlVisible="false"
+    else if (key="back") then 
+      m.top.setFocus(false)
     end if
   end if
   return handled

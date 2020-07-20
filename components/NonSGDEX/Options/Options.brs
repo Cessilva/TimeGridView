@@ -138,6 +138,7 @@ Function Init()
 End Function
 
 sub asignaFocus()
+
 if m.top.hasFocus= true then
 m.myRowListButtons.setFocus(true)
 end if
