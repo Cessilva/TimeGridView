@@ -59,8 +59,11 @@ end sub
       m.options.visible="true"
       m.VideoOptions.visible="false"
       m.videoPlayer.videoControl="pause"
-      m.options.setFocus(true)
-      m.options.hasFocus=true
+      if m.top.isInFocusChain() and not m.options.hasFocus()  then
+      ?"Here we go "
+      'm.options.setFocus(true)
+      'm.options.hasFocus=true
+      end if 
       m.videoPlayer.controlVisible="false"
       handled = true
       end if

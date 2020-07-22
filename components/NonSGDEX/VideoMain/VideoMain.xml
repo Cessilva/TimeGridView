@@ -4,6 +4,7 @@
         <field id="text" type="string" />
     </interface>
     <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/VideoMain/VideoMain.brs"/>
+    <script type = "text/brightscript" uri="pkg:/components/OptionsViewLogic.brs"/>
     <children>
         <Group id="container">
             <VideoScreen id="VideoPlayer"/>
