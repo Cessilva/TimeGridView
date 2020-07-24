@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="VistaPersonalizada" extends="Group" >
-    <interface>
+ <interface>
+        <field id="contentManagerType" type="string" value="grid" />
+        <field id="rowItemFocused" type="vector2d" alwaysNotify="true" />
+        <field id="content" type="node" />
+        <field id="wasShown" type="boolean" value="false" />
+        <field id="wasClosed" type="boolean" value="false" />
+        <field id="saveState" type="boolean" value="false" />
         <field id="text" type="string" />
     </interface>
     <script type = "text/brightscript" uri="pkg:/components/NonSGDEX/VideoMain/VideoMain.brs"/>

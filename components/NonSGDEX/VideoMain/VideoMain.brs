@@ -1,28 +1,34 @@
 function init() 
-    m.top.observeField("focusedChild", "OnChildFocused")
-end function
-sub OnChildFocused()
 m.consulta=m.top.findNode("Consulta")
 m.consulta.content="Presiona hacia abajo para mas opciones"
 m.options= m.top.findNode("Options")
 m.VideoOptions=m.top.findNode("VideoOptions")
 m.VideoOptions.visible="false"
-m.consulta.visible="false"
-m.options.visible="false"
+m.consulta.visible=false
+m.options.visible=false
 m.videoPlayer=m.top.findNode("VideoPlayer")
-m.videoPlayer.videoControl="play"
 m.counter=1
 m.options.observeField("salida", "salidaOpciones")
 m.VideoOptions.observeField("salida", "salidaOpciones")
 m.VideoOptions.titulo=m.options.nodoContenido.title
+m.top.observeField("focusedChild", "OnChildFocused")
+m.contador=0
+end function
+
+sub OnChildFocused()
+m.contador++
+if m.contador=1 then
+m.videoPlayer.videoControl="play"
+end if
 end sub
+
 
 sub salidaOpciones()
 if m.options.salida=true or m.VideoOptions.salida=true then
 m.videoPlayer.setFocus(true)
-m.consulta.visible="false"
-m.options.visible="false"
-m.VideoOptions.visible="false"  
+m.consulta.visible=false
+m.options.visible=false
+m.VideoOptions.visible=false  
 m.videoPlayer.videoControl="resume"
 end if 
 end sub
@@ -59,10 +65,10 @@ end sub
       m.options.visible="true"
       m.VideoOptions.visible="false"
       m.videoPlayer.videoControl="pause"
-      if m.top.isInFocusChain() and not m.options.hasFocus()  then
+      if m.top.isInFocusChain() and not m.options.hasFocus()  then 
       ?"Here we go "
-      'm.options.setFocus(true)
-      'm.options.hasFocus=true
+      m.options.setFocus(true)
+      m.options.hasFocus=true
       end if 
       m.videoPlayer.controlVisible="false"
       handled = true
