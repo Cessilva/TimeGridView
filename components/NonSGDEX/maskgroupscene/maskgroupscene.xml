@@ -29,7 +29,7 @@ maskOffset="[0,20]" no importa el primero , y lo otro lo corta de abajo a abbiba
           translation="[2,0]"
           width = "2000" 
           height = "2024" 
-          uri = "pkg:/images/logo3.png">
+          uri = "cachefs:/logo3.png">
            <!-- translation="[50,0]" MaskGroup-->
          <!-- <MaskGroup 
           translation="[50,0]"
@@ -44,7 +44,7 @@ maskOffset="[0,20]" no importa el primero , y lo otro lo corta de abajo a abbiba
         width = "700" 
           height = "708" 
         translation="[600,0]"
-        uri = "pkg:/images/logo3.png" />
+        uri = "cachefs:/logo3.png" />
   </children>
 
 </component>
