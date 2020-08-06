@@ -86,9 +86,9 @@ La entrada del manifiesto del canal bsprof_data_dest determina cómo se recupera
 # Ver datos de creación de perfiles
 
 
-Después de descargar el archivo ***.bsprof***, los datos se pueden ver con la herramienta de visualización BrightScript Profiler.  La herramienta enumera las llamadas a funciones en cada hilo.  Para las aplicaciones SceneGraph, cada hilo corresponde al main BrightScript thread o a una única instancia de un <component>.  
+Después de descargar el archivo ***.bsprof***, los datos se pueden ver con la herramienta de visualización BrightScript Profiler.  La herramienta enumera las llamadas a funciones en cada hilo.  Para las aplicaciones SceneGraph, cada hilo corresponde al main BrightScript thread o a una única instancia de un < component >.  
 
-Por ejemplo, si tiene un nodo Task del que se crean instancias varias veces, cada instancia aparecerá como un hilo independiente.  Los resultados son los mismos para cualquier <component> personalizado en el canal que se instancia varias veces.  El main BrightScript thread (Thread main) también se representa como un solo subproceso, aunque no tiene <component>.
+Por ejemplo, si tiene un nodo Task del que se crean instancias varias veces, cada instancia aparecerá como un hilo independiente.  Los resultados son los mismos para cualquier < component > personalizado en el canal que se instancia varias veces.  El main BrightScript thread (Thread main) también se representa como un solo subproceso, aunque no tiene < component >.
 
 Para cada función enumerada en la herramienta, puedes expandirla para profundizar más en su ruta de llamada y obtener datos más detallados sobre la función.  Si habilitas line-level profiling para el canal, también puede hacer clic en las elipses a la derecha de una función para ver los datos de generación de perfiles para las líneas individuales de código dentro de una función.
 
