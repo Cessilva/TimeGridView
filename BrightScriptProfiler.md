@@ -100,34 +100,121 @@ Para cada función enumerada en la herramienta, puedes expandirla para profundiz
 
 ## Ejemplo TimeGridView
 
-### PROFILER
-
-<p align="center"> 
-<img src="/images/Threads.png"/> 
-</p> 
-
 ### CPU
+La pestaña CPU enumera el ***CPU time***, el ***wall-clock time***, las estadísticas de recuento de llamadas para cada función observada y para la ruta de llamada asociada a la función (expanda una función para ver su ruta de llamada.
+
+***CPU time*** se refiere al número de operaciones que cada función necesita para completarse;  este número debe ser igual en los dispositivos Roku de gama baja y alta.  El ***wall-clock time*** se refiere al tiempo que tarda una función en completarse en el mundo real.  
+
+>Este valor puede variar entre diferentes dispositivos Roku.Por ejemplo, una función puede requerir la misma cantidad de operaciones para completarse en diferentes dispositivos Roku, pero los dispositivos Roku de gama baja pueden tomar más tiempo en el mundo real para completar una operación que un dispositivo Roku de gama alta.
+
+Las columnas ***CPU time*** y **wall-clock time** ademas estan separadas en secciones self, callees, and total:
+- self. The CPU/wall-clock time the function consumes itself.
+- callees. The amount of CPU/wall-clock time consumed by any functions called by the original function.
+- total. The amount of CPU/wall-clock time consumed by the original function (self) and any callee functions.
+
+<table >
+  <tr>
+    <th>Etiqueta</th>
+    <th>Descripcion</th>
+  </tr>
+  <tr>
+    <td>CPU self</td>
+    <td>Time consumed by the CPU process.</td>
+  </tr>
+  <tr>
+    <td>CPU callees</td>
+    <td>CPU time of any other functions that are called.</td>
+  </tr>
+  <tr>
+    <td>CPU total</td>
+    <td>Total amount of CPU time consumed. CPU (Self + Callees)</td>
+  </tr>
+    <tr>
+    <td>TIME self</td>
+    <td>Wall clock time that a function takes to complete</td>
+  </tr>
+  <tr>
+    <td>TIME callees</td>
+    <td>Wall clock time of any other functions that are called.</td>
+  </tr>
+  <tr>
+    <td>TIME total</td>
+    <td>Total wall clock time. Time (Self + Callees)</td>
+  </tr>
+  <tr>
+    <td>Calls</td>
+    <td>Number of times that function was called during channel run.</td>
+  </tr>
+</table>
 
 <p align="center"> 
 <img src="/images/CPU.png"/> 
 </p> 
 
 ### MEMORY GRAPH
+La pestaña Gráfico de memoria visualiza el consumo de memoria para cada hilo en la aplicación del canal.  Mueva el puntero del mouse sobre una columna para ver la memoria asignada, libre y no liberada para el hilo.
 
 <p align="center"> 
 <img src="/images/Memory.png"/> 
 </p> 
 
 ### MEMORY 
+The Memory tab lists allocated, freed, and unfreed memory statistics for each function observed (self) and for the function's associated call path (total).See Profiling Values for more information on the memory statistics displayed in this tab.
+
+La pestaña Memoria enumera las estadísticas de memoria asignada, liberada y no liberada para cada función observada (self) y para la ruta de llamada asociada a la función (total). Consulte Profiling Values para obtener más información sobre las estadísticas de memoria que se muestran en esta pestaña.
 
 <p align="center"> 
 <img src="/images/Memory2.png"/> 
 </p> 
 
+#### Perfiles de nivel de línea 
+Puede recopilar datos de perfil para cada línea de código fuente de BrightScript para identificar mejor el uso elevado de CPU y memoria.  Para hacer esto, habilite la creación de perfiles ***(bsprof_enable = 1)***, la creación de perfiles a nivel de línea ***(bsprof_enable_lines = 1)*** y RSG versión 1.2 ***(rsg_version = 1.2)*** en el manifiesto del canal.  En la pestaña CPU o Memoria, haga clic en los puntos suspensivos a la derecha de la función para profundizar en sus líneas individuales de código.
+
+<p align="center"> 
+<img src="/images/Memory3.png"/> 
+</p> 
+
+### TOP OFFENDERS
+
+La pestaña Top Offenders muestra las funciones o rutas de llamadas de función que utilizaron la mayor cantidad de CPU, memoria o tiempo.  Esta pestaña suele ser el mejor lugar para comenzar a diagnosticar posibles problemas de rendimiento.  Las 10 funciones principales con la menor cantidad de memoria disponible se enumeran de forma predeterminada.  Puede cambiar el informe a una lista de los 20, 100, 500 principales o ingresar una profundidad personalizada, y puede seleccionar qué métrica ver.  Por ejemplo, los 5 métodos principales con el tiempo de CPU total más alto se muestran en la siguiente imagen:
+
+<p align="center"> 
+<img src="/images/top.png"/>
+</p>  
+
+>Click Show call paths to open the CPU or Memory tab with more detailed profiling data for the selected function and metric.
+
+
+<p align="center"> 
+<img src="/images/top2.png"/>
+</p>  
+
+
 ### DEVICE MONITORING
+Monitoring tab contains a real-time chart of memory usage.
 
 <p align="center"> 
 <img src="/images/Device.png"/> 
 </p> 
 
-
+# Using this data
+A continuación, se muestran algunos puntos clave sobre cómo utilizar estos datos para mejorar el rendimiento del canal:
+<table >
+  <tr>
+    <th>Data Type</th>
+    <th>Definition and Best Use</th>
+  </tr>
+  <tr>
+    <td>High wall-clock time but low CPU time</td>
+    <td>Este patrón muestra que una función está esperando constantemente, ya sea para una entrada o una respuesta de una fuente externa.  Estas funciones son más adecuadas para los nodos de tareas para que no bloqueen el hilo principal.</td>
+  </tr>
+  <tr>
+    <td>Funciones complejas</td>
+    <td>Intenta simplificar lo más posible.  Si una función maneja varias tareas, considere dividirla en varias funciones para aislar aún más la cantidad de CPU o tiempo de reloj de pared que consume cada tarea.</td>
+  </tr>
+  <tr>
+    <td>Functions that consume a large amount of CPU or wall-clock time</td>
+    <td>Mueva las funciones a los nodos de tareas, si están constantemente esperando.  Se puede determinar que una función está esperando si su wall-clock time es alto, pero su costo de CPU es bajo</td>
+  </tr>
+   
+</table>
