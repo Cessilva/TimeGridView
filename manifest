@@ -13,3 +13,10 @@ splash_screen_fhd=pkg:/images/splash_fhd.jpg
 ui_resolutions=hd
 splash_rsg_optimization=1
 bs_libs_required=roku_ads_lib
+
+bsprof_data_dest=network
+bsprof_enable=1
+bsprof_enable_lines=1
+bsprof_enable_mem=1
+bsprof_sample_ratio=1.0
+rsg_version=1.2
