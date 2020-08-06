@@ -83,3 +83,51 @@ These profiling commands exist on port 8080 (Roku OS Versions 9 and later):
 
 La entrada del manifiesto del canal bsprof_data_dest determina cómo se recuperan los datos de creación de perfiles del dispositivo.  Los datos se pueden almacenar localmente en el dispositivo y descargar después de que el canal termina de ejecutarse y sale, o se pueden transmitir a través de una conexión de red mientras el canal se está ejecutando.  La transmisión consume significativamente menos memoria en el dispositivo mientras se ejecuta el canal.  Además, si el canal falla, los datos de la memoria se habrán recopilado con precisión hasta el momento del bloqueo (los datos de la CPU, sin embargo, generalmente se pierden si ocurre una falla).
 
+# Ver datos de creación de perfiles
+
+
+Después de descargar el archivo ***.bsprof***, los datos se pueden ver con la herramienta de visualización BrightScript Profiler.  La herramienta enumera las llamadas a funciones en cada hilo.  Para las aplicaciones SceneGraph, cada hilo corresponde al main BrightScript thread o a una única instancia de un <component>.  
+
+Por ejemplo, si tiene un nodo Task del que se crean instancias varias veces, cada instancia aparecerá como un hilo independiente.  Los resultados son los mismos para cualquier <component> personalizado en el canal que se instancia varias veces.  El main BrightScript thread (Thread main) también se representa como un solo subproceso, aunque no tiene <component>.
+
+Para cada función enumerada en la herramienta, puedes expandirla para profundizar más en su ruta de llamada y obtener datos más detallados sobre la función.  Si habilitas line-level profiling para el canal, también puede hacer clic en las elipses a la derecha de una función para ver los datos de generación de perfiles para las líneas individuales de código dentro de una función.
+
+## EJEMPLO PAGINA
+
+<p align="center"> 
+<img src="/images/Threads.png"/> 
+</p> 
+
+## Ejemplo TimeGridView
+
+### PROFILER
+
+<p align="center"> 
+<img src="/images/Threads.png"/> 
+</p> 
+
+### CPU
+
+<p align="center"> 
+<img src="/images/CPU.png"/> 
+</p> 
+
+### MEMORY GRAPH
+
+<p align="center"> 
+<img src="/images/Memory.png"/> 
+</p> 
+
+### MEMORY 
+
+<p align="center"> 
+<img src="/images/Memory2.png"/> 
+</p> 
+
+### DEVICE MONITORING
+
+<p align="center"> 
+<img src="/images/Device.png"/> 
+</p> 
+
+
